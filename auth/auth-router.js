@@ -26,8 +26,8 @@ router.post("/login", (req, res) => {
     Users.getBy({username})
     .first()
     .then(user => {
-        if (user && compareSync(password, user.password)) {
-            res.status(200).json(`Welcome ${user.username}`)
+        if (user && bc.compareSync(password, user.password)) {
+            res.status(200).json(`Welcome ${user.username}!`)
         } else {
             res.status(401).json({error: "Invalid username or password."})
         }

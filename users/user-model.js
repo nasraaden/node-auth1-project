@@ -14,13 +14,13 @@ function get () {
 
 function getBy(filter) {
     return db("users")
-      .select("id", "username", "password")
+      .select("id", "username")
       .where(filter);
   }
 
 function getById(id) {
     return db("users")
-        .select("id", "username", "password")
+        .select("id", "username")
         .where({id})
         .first();
 }
