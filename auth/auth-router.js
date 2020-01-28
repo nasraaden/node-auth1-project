@@ -16,6 +16,7 @@ router.post("/register", (req, res) => {
         res.status(201).json(users)
     })
     .catch(err => {
+        console.log(err)
         res.status(500).json({error: "There was an error adding a user."})
     })
 })
@@ -27,6 +28,8 @@ router.post("/login", (req, res) => {
     .first()
     .then(user => {
         if (user && bc.compareSync(password, user.password)) {
+            req.session.loggedIn = true;
+            req.session.userId = user.id;
             res.status(200).json(`Welcome ${user.username}!`)
         } else {
             res.status(401).json({error: "Invalid username or password."})

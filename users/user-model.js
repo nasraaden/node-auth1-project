@@ -14,13 +14,13 @@ function get () {
 
 function getBy(filter) {
     return db("users")
-      .select("id", "username")
+      .select("id", "username", "password")
       .where(filter);
   }
 
 function getById(id) {
     return db("users")
-        .select("id", "username")
+        .select("id", "username", "password")
         .where({id})
         .first();
 }
@@ -33,3 +33,4 @@ function insert(user){
             return getById(id)
         })
 }
+    
